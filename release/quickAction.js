@@ -5,14 +5,18 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var shortid = require('shortid');
+var deepfreeze = require('deep-freeze');
 
 var QuickAction = function () {
     function QuickAction(actionName, quickAction) {
+        var safeMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
         _classCallCheck(this, QuickAction);
 
         this.type = actionName + '-' + shortid.generate();
         this.quickAction = quickAction;
         this.actionName = actionName;
+        this.safeMode = safeMode;
     }
 
     _createClass(QuickAction, [{
@@ -42,6 +46,9 @@ var QuickAction = function () {
             var _this2 = this;
 
             return function (state, action) {
+                if (_this2.safeMode === true) {
+                    deepfreeze(state);
+                }
                 return _this2.quickAction.apply(_this2, [state].concat(action.payload));
             };
         }

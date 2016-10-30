@@ -2,14 +2,19 @@ var _ = require('lodash');
 var QuickAction = require('./quickAction');
 
 class QuickActions {
-    constructor(initialState, actionsMap) {
+    /**
+     * @param initialState
+     * @param actionsMap
+     * @param strictMode true/false
+     */
+    constructor(initialState, actionsMap, strictMode = false) {
         this.initialState = ()=>initialState;
 
         this.reducers = {};
         this.actions = {};
 
         _.map(actionsMap, (action, actionName)=> {
-            const quickAction = new QuickAction(actionName, action);
+            const quickAction = new QuickAction(actionName, action, strictMode);
             const actionType = quickAction.getActionType();
             this.actions[actionType] = quickAction;
             this.reducers[actionType] = quickAction.toReducer();

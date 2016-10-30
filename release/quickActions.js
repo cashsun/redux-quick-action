@@ -8,8 +8,15 @@ var _ = require('lodash');
 var QuickAction = require('./quickAction');
 
 var QuickActions = function () {
+    /**
+     * @param initialState
+     * @param actionsMap
+     * @param strictMode true/false
+     */
     function QuickActions(initialState, actionsMap) {
         var _this = this;
+
+        var strictMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
         _classCallCheck(this, QuickActions);
 
@@ -21,7 +28,7 @@ var QuickActions = function () {
         this.actions = {};
 
         _.map(actionsMap, function (action, actionName) {
-            var quickAction = new QuickAction(actionName, action);
+            var quickAction = new QuickAction(actionName, action, strictMode);
             var actionType = quickAction.getActionType();
             _this.actions[actionType] = quickAction;
             _this.reducers[actionType] = quickAction.toReducer();
