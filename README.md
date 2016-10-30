@@ -1,7 +1,7 @@
 # redux-quick-action
 Redux action wrapper that hides reducer implementation details
 
-Redux was designed in a very modular way, as a result developers are given full access to reducers and action types. As a result, it's fairly [tedious](https://github.com/reactjs/redux/blob/master/examples/todos-flow/src/types/index.js) to setup an action [flow](https://cdn-images-1.medium.com/max/800/1*rictDFcDHCvOacMUaWxZEQ.png). redux-quick-action helps abstract type strings, switch statements in reducers and many other implementation details away from you.
+Redux was designed in a very modular way, as a result developers are given full access to reducers and action types.  It could be fairly [tedious](https://github.com/reactjs/redux/blob/master/examples/todos-flow/src/types/index.js) to setup an action [flow](https://cdn-images-1.medium.com/max/800/1*rictDFcDHCvOacMUaWxZEQ.png). redux-quick-action helps abstract type strings, switch statements in reducers and many other implementation details away from you.
 
 ★ Action type strings ("LOG_IN", "SET_USER" etc.) are auto-generated and guaranteed unique (using [shortid](https://www.npmjs.com/package/shortid))
 
