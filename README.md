@@ -9,6 +9,22 @@ Redux was designed in a very modular way, as a result developers are given full 
 
 ★ Build your aync actions on top of quick actions
 
+- ATTENTION: this module is essentially forcing a many(actions) to 1 (reducer) model, which is only a subset of what redux offers (many to many). The many to many model was by design to allow actions to cause "side effects" when different reducers handles same action event, which case in some cases people want to avoid or use combo actions (see below) to achieve the same.
+
+***a combo action that has side effects***
+```javascript
+import action1 from 'quickActions1';
+import actionB from 'quickActions2';
+
+function doTwoThings(){
+   action1();
+   actionB();
+}
+
+export { doTwoThings }
+
+```
+
 
 Install as an [npm module](https://www.npmjs.com/package/redux-quick-action)
 
