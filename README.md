@@ -3,7 +3,7 @@ Redux action wrapper that hides reducer implementation details
 
 Redux was designed in a very modular way, as a result developers are given full access to reducers and action types. As a result, it's fairly [tedious](https://github.com/reactjs/redux/blob/master/examples/todos-flow/src/types/index.js) to setup an action [flow](https://cdn-images-1.medium.com/max/800/1*rictDFcDHCvOacMUaWxZEQ.png). redux-quick-action helps abstract type strings, switch statements in reducers and many other implementation details away from you.
 
-★ Action type strings ("LOG_IN", "SET_USER" etc.) are auto-generated and garanteed unique (using [shortid](https://www.npmjs.com/package/shortid))
+★ Action type strings ("LOG_IN", "SET_USER" etc.) are auto-generated and guaranteed unique (using [shortid](https://www.npmjs.com/package/shortid))
 
 ★ Write actions like the way you write reducers (see example below) and use them straight away
 
@@ -20,9 +20,9 @@ npm i redux-quick-action -S
 ```javascript
 import QuickActions from 'redux-quick-action';
 const quickActions = new QuickActions(initialState, actionMap, isStrictMode = false);
-  initialState: any. the initial state tree for the underlying reducer
-  actionMap: map. see example below
-  isStrictMode: bool. whether to thow exception is reducer modifies the current state, which is supposed to be covered by your unit tests. 
+  //initialState: any. the initial state tree for the underlying reducer
+  //actionMap: map. see example below
+  //isStrictMode: bool. whether to thow exception is reducer modifies the current state, which is supposed to be covered by your unit tests. 
 ```
 
 ```javascript
