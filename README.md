@@ -21,9 +21,9 @@ npm i redux-quick-action -S
 import QuickActions from 'redux-quick-action';
 const quickActions = new QuickActions(initialState, actionMap, isStrictMode = false);
 ```
-> *initialState*: any. the initial state tree for the underlying reducer
-> *actionMap*: map. see example below
-> *isStrictMode*: bool. whether to throw exception when reducer modifies the current state. This is usually supposed to be covered by your unit tests, however why not have them built-in?
+> initialState: any. the initial state tree for the underlying reducer
+> actionMap: map. see example below
+> isStrictMode: bool. whether to throw exception when reducer modifies the current state. This is usually supposed to be covered by your unit tests, however why not have them built-in?
 
 
 ```javascript
