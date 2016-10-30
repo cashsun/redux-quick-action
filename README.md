@@ -10,7 +10,7 @@ Redux was designed in a very modular way, as a result developers are given full 
 ★ Build your aync actions on top of quick actions
 
 
-Install as a npm module
+Install as an [npm module](https://www.npmjs.com/package/redux-quick-action)
 
 ```bash
 npm i redux-quick-action -S
