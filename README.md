@@ -50,9 +50,9 @@ const actionMap = {
      * write your quick actions similar to the way you write reducers
      * i.e. a function takes state and ...(rest of params), returns a new state
      *
-     * @param state previous state
-     * @param username first param for the action to be generated
-     * @param userid second param for the action to be generated
+     * @param state 'current state'
+     * @param username 'first param for the action to be generated'
+     * @param userid 'second param for the action to be generated'
      * @returns {*} next state
      */
     setUser(state, username, userid) {
@@ -119,7 +119,7 @@ function loadUser(userId) {
         })
         .finally(()=>{
             finishLoading(); //this will throw TypeError since we are in safe mode.
-                            //change the quick action so that it does not modify the previous state
+                            //change the quick action so that it does not modify the current state
         });
 }
 
