@@ -31,7 +31,8 @@ const quickActions = new QuickActions(initialState, actionMap, isStrictMode = fa
 ```javascript
 quickActions.toActions();   
 //returns redux simple actions i.e. ()=> {type: 'LOG_IN', payload}
-myQuickActions.toReducer(); 
+
+quickActions.toReducer(); 
 //returns redux reducer handles all the action types configured. 
 //Default case returns current state, just like the default case in your reducer switch block.
 ```
