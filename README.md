@@ -18,6 +18,7 @@ npm i redux-quick-action -S
 
 ***API***
 ```javascript
+import QuickActions from 'redux-quick-action';
 const quickActions = new QuickActions(initialState, actionMap, isStrictMode = false);
   initialState: any. the initial state tree for the underlying reducer
   actionMap: map. see example below
@@ -26,7 +27,7 @@ const quickActions = new QuickActions(initialState, actionMap, isStrictMode = fa
 
 ```javascript
 quickActions.toActions();   //returns redux simple actions i.e. ()=> {type: 'LOG_IN', payload}
-myQuickActions.toReducer(); //returns redux reducer handles all the action types configures, returns current state if no matching action type
+myQuickActions.toReducer(); //returns redux reducer handles all the action types configured. Default case returns current state, just like the default case in your reducer switch block.
 ```
 
 ***[example/myQuickActions.js](https://github.com/cashsun/redux-quick-action/blob/master/example/myQuickActions.js)***
