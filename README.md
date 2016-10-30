@@ -21,16 +21,17 @@ npm i redux-quick-action -S
 import QuickActions from 'redux-quick-action';
 const quickActions = new QuickActions(initialState, actionMap, isStrictMode = false);
 ```
-> initialState: any. the initial state tree for the underlying reducer
-> actionMap: map. see example below
-> isStrictMode: bool. whether to throw exception when reducer modifies the current state. This is usually supposed to be covered by your unit tests, however why not have them built-in?
+> *initialState*: any. the initial state tree for the underlying reducer
+> *actionMap*: map. see example below
+> *isStrictMode*: bool. whether to throw exception when reducer modifies the current state. This is usually supposed to be covered by your unit tests, however why not have them built-in?
 
 
 ```javascript
 quickActions.toActions();   
 //returns redux simple actions i.e. ()=> {type: 'LOG_IN', payload}
 myQuickActions.toReducer(); 
-//returns redux reducer handles all the action types configured. Default case returns current state, just like the default case in your reducer switch block.
+//returns redux reducer handles all the action types configured. 
+//Default case returns current state, just like the default case in your reducer switch block.
 ```
 
 ***[example/myQuickActions.js](https://github.com/cashsun/redux-quick-action/blob/master/example/myQuickActions.js)***
