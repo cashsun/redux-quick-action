@@ -63,7 +63,7 @@ const actionMap = {
     },
 
     /**
-     * Your action might not take any param
+     * Your redux action might not take any param
      *
      * @param state
      * @returns {*} next state
