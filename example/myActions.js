@@ -15,7 +15,8 @@ function loadUser(userId) {
             setUser(user.username, userId); //notice here you are using the generated actions, no need for state.
         })
         .finally(()=>{
-            finishLoading(); //dispatch finish loading redux event
+            finishLoading(); //this will throw TypeError since we are in safe mode.
+                            //change the quick action so that it does not modify the previous state
         });
 }
 
