@@ -1,5 +1,5 @@
 # redux-quick-action
-Redux action wrapper that hides reducer implementation details
+>Redux action wrapper that hides reducer implementation details
 
 Redux was designed in a very modular way, as a result developers are given full access to reducers and action types.  It could be fairly [tedious](https://github.com/reactjs/redux/blob/master/examples/todos-flow/src/types/index.js) to setup an action [flow](https://cdn-images-1.medium.com/max/800/1*rictDFcDHCvOacMUaWxZEQ.png). redux-quick-action helps abstract type strings, switch statements in reducers and many other implementation details away from you.
 
@@ -9,7 +9,7 @@ Redux was designed in a very modular way, as a result developers are given full 
 
 ★ Build your aync actions on top of quick actions
 
-**ATTENTION**: this module is essentially forcing a many(actions) to 1 (reducer) model, which is only a subset of what redux offers (many to many). The many to many model was by design to allow actions to cause "side effects" when different reducers handles same action event, which is in some cases what people want to avoid or use combo actions (see below) instead.
+**ATTENTION**: this module is essentially forcing a 'many(actions) to 1 (reducer)' model, which is only a subset of what redux offers (many to many). The many to many model was by design to allow actions to cause "side effects" when different reducers handles same action event, which is in some cases what people want to avoid or use combo actions (see below) instead`
 
 Nontheless, quickActions should be treated as the *smallest building blocks* for more complex actions and each only responsible for change on one state tree.
 
