@@ -49,6 +49,7 @@ const quickActions = new QuickActions(initialState, actionMap, options = {});
 
 > options
 >> strict: false. whether to throw exception when reducer modifies the current state. This is usually supposed to be covered by your unit tests, however why not have them built-in?
+
 >> namespace: ''. give a prefix for your action type. 'foo' -> e.g. foo/login/21ssdaf5
 
 ```javascript
