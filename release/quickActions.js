@@ -11,12 +11,15 @@ var QuickActions = function () {
     /**
      * @param initialState
      * @param actionsMap
-     * @param strictMode true/false
+     * @param options {
+     *                      strict: false,
+      *                     namespace: ''
+     *                 }
      */
     function QuickActions(initialState, actionsMap) {
         var _this = this;
 
-        var strictMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
         _classCallCheck(this, QuickActions);
 
@@ -28,7 +31,7 @@ var QuickActions = function () {
         this.actions = {};
 
         _.map(actionsMap, function (action, actionName) {
-            var quickAction = new QuickAction(actionName, action, strictMode);
+            var quickAction = new QuickAction(actionName, action, options);
             var actionType = quickAction.getActionType();
             _this.actions[actionType] = quickAction;
             _this.reducers[actionType] = quickAction.toReducer();

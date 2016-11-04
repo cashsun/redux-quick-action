@@ -31,7 +31,27 @@ describe('quick action', ()=> {
             payload: ['cash', '123456']
         };
 
-        expect(/^login-.+/.test(actionType)).to.equal(true);
+        expect(/^login\/.+/.test(actionType)).to.equal(true);
+        expect(action('cash', '123456')).to.deep.equal(expectedAction);
+
+    });
+
+    it('got correct uniq action type with namespace and converts to redux action', ()=> {
+
+        var quickAction = new QuickAction('login', login, {namespace: 'foo'});
+
+        const actionType = quickAction.getActionType();
+
+        console.log('generated action type:', actionType);
+
+        const action = quickAction.toAction();
+
+        const expectedAction = {
+            type: actionType,
+            payload: ['cash', '123456']
+        };
+
+        expect(/^foo\/login\/.+/.test(actionType)).to.equal(true);
         expect(action('cash', '123456')).to.deep.equal(expectedAction);
 
     });
@@ -62,7 +82,7 @@ describe('quick action', ()=> {
                 username,
                 password
             })
-        }, true);
+        }, {strict: true});
 
         const actionType = quickAction.getActionType();
 
@@ -122,7 +142,27 @@ describe('quick action (release)', ()=> {
             payload: ['cash', '123456']
         };
 
-        expect(/^login-.+/.test(actionType)).to.equal(true);
+        expect(/^login\/.+/.test(actionType)).to.equal(true);
+        expect(action('cash', '123456')).to.deep.equal(expectedAction);
+
+    });
+
+    it('got correct uniq action type with name space and converts to redux action', ()=> {
+
+        var quickAction = new QuickActionRelease('login', login, {namespace: 'foo'});
+
+        const actionType = quickAction.getActionType();
+
+        console.log('generated action type:', actionType);
+
+        const action = quickAction.toAction();
+
+        const expectedAction = {
+            type: actionType,
+            payload: ['cash', '123456']
+        };
+
+        expect(/^foo\/login\/.+/.test(actionType)).to.equal(true);
         expect(action('cash', '123456')).to.deep.equal(expectedAction);
 
     });
@@ -153,7 +193,7 @@ describe('quick action (release)', ()=> {
                 username,
                 password
             })
-        }, true);
+        }, {strict: true});
 
         const actionType = quickAction.getActionType();
 

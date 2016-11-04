@@ -2,11 +2,14 @@ var shortid = require('shortid');
 var deepfreeze = require('deep-freeze');
 
 class QuickAction {
-    constructor(actionName, quickAction, safeMode = false) {
-        this.type = `${actionName}-${shortid.generate()}`;
+    constructor(actionName, quickAction, options = {}) {
+
+        const namespace = (options.namespace && options.namespace + '/') || '';
+        this.type = `${namespace}${actionName}/${shortid.generate()}`;
         this.quickAction = quickAction;
         this.actionName = actionName;
-        this.safeMode = safeMode;
+        this.strictMode = options.strict;
+
     }
 
     getActionType() {
@@ -25,7 +28,7 @@ class QuickAction {
 
     toReducer() {
         return (state, action)=> {
-            if(this.safeMode === true){
+            if (this.strictMode === true) {
                 deepfreeze(state)
             }
             return this.quickAction.apply(this, [state].concat(action.payload));

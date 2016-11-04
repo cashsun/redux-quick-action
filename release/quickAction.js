@@ -9,14 +9,15 @@ var deepfreeze = require('deep-freeze');
 
 var QuickAction = function () {
     function QuickAction(actionName, quickAction) {
-        var safeMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+        var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
         _classCallCheck(this, QuickAction);
 
-        this.type = actionName + '-' + shortid.generate();
+        var namespace = options.namespace && options.namespace + '/' || '';
+        this.type = '' + namespace + actionName + '/' + shortid.generate();
         this.quickAction = quickAction;
         this.actionName = actionName;
-        this.safeMode = safeMode;
+        this.strictMode = options.strict;
     }
 
     _createClass(QuickAction, [{
@@ -46,7 +47,7 @@ var QuickAction = function () {
             var _this2 = this;
 
             return function (state, action) {
-                if (_this2.safeMode === true) {
+                if (_this2.strictMode === true) {
                     deepfreeze(state);
                 }
                 return _this2.quickAction.apply(_this2, [state].concat(action.payload));

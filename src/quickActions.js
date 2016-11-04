@@ -5,16 +5,20 @@ class QuickActions {
     /**
      * @param initialState
      * @param actionsMap
-     * @param strictMode true/false
+     * @param options {
+     *                      strict: false,
+      *                     namespace: ''
+     *                 }
      */
-    constructor(initialState, actionsMap, strictMode = false) {
+    constructor(initialState, actionsMap, options = {}) {
+
         this.initialState = ()=>initialState;
 
         this.reducers = {};
         this.actions = {};
 
         _.map(actionsMap, (action, actionName)=> {
-            const quickAction = new QuickAction(actionName, action, strictMode);
+            const quickAction = new QuickAction(actionName, action, options);
             const actionType = quickAction.getActionType();
             this.actions[actionType] = quickAction;
             this.reducers[actionType] = quickAction.toReducer();
