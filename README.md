@@ -101,7 +101,7 @@ const actionMap = {
 };
 
 //quick actions in strict mode
-export default new QuickActions(initialState, actionMap, true);
+export default new QuickActions(initialState, actionMap, {strict: true});
 ```
 
 ***[example/myReducers.js](https://github.com/cashsun/redux-quick-action/blob/master/example/myReducers.js)***
