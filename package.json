@@ -1,6 +1,6 @@
 {
   "name": "redux-quick-action",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Redux action/reducer wrapper that hides synchronous reducers implementation",
   "main": "index.js",
   "scripts": {
