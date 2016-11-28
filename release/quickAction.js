@@ -47,7 +47,7 @@ var QuickAction = function () {
             var _this2 = this;
 
             return function (state, action) {
-                if (_this2.strictMode === true) {
+                if (_this2.strictMode === true && state !== null && state !== undefined) {
                     deepfreeze(state);
                 }
                 return _this2.quickAction.apply(_this2, [state].concat(action.payload));

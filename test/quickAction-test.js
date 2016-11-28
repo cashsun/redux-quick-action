@@ -98,6 +98,28 @@ describe('quick action', ()=> {
         expect(reducer.bind(null, initialState(), expectedAction)).to.throw(TypeError, /object is not extensible/);
     });
 
+    it('do not throw exception if initial state is null or undefined', ()=>{
+        const quickAction = new QuickAction('login', (state, username, password)=>{
+            return Object.assign({}, state, {
+                username,
+                password
+            })
+        }, {strict: true});
+
+        const actionType = quickAction.getActionType();
+
+        console.log('generated action type:', actionType);
+
+        const reducer = quickAction.toReducer();
+
+        const expectedAction = {
+            type: actionType,
+            payload: ['cash', '123456']
+        };
+
+        expect(reducer.bind(null, undefined, expectedAction)).to.not.throw(TypeError, /object is not extensible/);
+    });
+
     it('throws no exception if quick action modifies previous state in non strict mode', ()=>{
         var quickAction = new QuickAction('login', (state, username, password)=>{
             return Object.assign(state, {
@@ -207,6 +229,29 @@ describe('quick action (release)', ()=> {
         };
 
         expect(reducer.bind(null, initialState(), expectedAction)).to.throw(TypeError, /object is not extensible/);
+    });
+
+
+    it('do not throw exception if initial state is null or undefined', ()=>{
+        const quickAction = new QuickActionRelease('login', (state, username, password)=>{
+            return Object.assign({}, state, {
+                username,
+                password
+            })
+        }, {strict: true});
+
+        const actionType = quickAction.getActionType();
+
+        console.log('generated action type:', actionType);
+
+        const reducer = quickAction.toReducer();
+
+        const expectedAction = {
+            type: actionType,
+            payload: ['cash', '123456']
+        };
+
+        expect(reducer.bind(null, undefined, expectedAction)).to.not.throw(TypeError, /object is not extensible/);
     });
 
     it('throws no exception if quick action modifies previous state in non strict mode', ()=>{

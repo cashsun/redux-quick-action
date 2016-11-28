@@ -28,7 +28,7 @@ class QuickAction {
 
     toReducer() {
         return (state, action)=> {
-            if (this.strictMode === true) {
+            if (this.strictMode === true && state !== null && state !== undefined) {
                 deepfreeze(state)
             }
             return this.quickAction.apply(this, [state].concat(action.payload));
